@@ -52,11 +52,5 @@ class PostInstaller(object):
         if you want to run always, set on = ['egg_info']
         """
         postinstaller = self.load_postinstall()
-        try:
-            should_run = postinstaller.should_run()
-        except:
-            should_run = False
-        if not should_run:
-            return
-        if postinstaller:
+        if postinstaller and postinstaller.should_run():
             postinstaller.run(self.dist)
