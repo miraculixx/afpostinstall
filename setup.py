@@ -46,7 +46,5 @@ dist = setup(
     ],
 )
 
-# note: this will always run, whether the install was successful or not!
+# run based on the 
 postinstall = PostInstaller(dist)
-if postinstall.should_run(dist):
-    postinstall.run()

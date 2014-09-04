@@ -52,7 +52,13 @@ class PostInstaller(object):
         if you only want to run on install, set on = ['install']
         if you want to run always, set on = ['egg_info']
         """
+        postinstaller = self.load_postinstall()
+        try:
+            should_run = postinstaller.should_run()
+        except:
+            should_run = False
+        if not should_run:
+            return
         #-- determine actual install dir
         self.install_dir = self.get_install_dir()
-        postinaller = load_postinstall(self)
         postinstaller.run(self.dist)
