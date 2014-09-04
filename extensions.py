@@ -38,7 +38,7 @@ class PostInstaller(object):
             class DummyInstaller:
                 def run(self):
                     pass
-                return DummyInstaller()
+            return DummyInstaller()
         else:
             return postinstaller
     
