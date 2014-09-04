@@ -6,6 +6,7 @@ Created on Sep 4, 2014
 from setuptools.command.install import install as _install
 import imp
 import os
+import sys
         
 class PostInstaller(object):
     def __init__(self, dist=None):
