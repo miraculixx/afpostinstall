@@ -27,7 +27,7 @@ class PostInstaller(object):
         ppid = psutil.Process(os.getpid()).ppid()
         return psutil.Process(ppid).cwd() 
     
-    def run(self, on=['egg_info']):
+    def run(self, on=['install']):
         """
         run the installer and post installation script
         
