@@ -47,6 +47,7 @@ class PostInstaller(object):
         """
         import sys
         import os
+        from distutils.sysconfig import get_python_lib
         # see if we have a virtualenv, if so append to path
         if 'VIRTUAL_ENV' in os.environ:
             sys.path.append(get_python_lib())
