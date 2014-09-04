@@ -50,11 +50,11 @@ class PostInstaller(object):
         from distutils.sysconfig import get_python_lib
         # see if we have a virtualenv, if so append to path
         if 'VIRTUAL_ENV' in os.environ:
+            install_dir = self.get_install_dir()
             sys.path.append(get_python_lib())
-            sys.path.append(postinstaller.get_install_dir())
-            os.chdir(postinstaller.get_install_dir())
+            sys.path.append(install_dir)
+            os.chdir(install_dir)
         return __import__('settings')
-    
         
     def run(self):
         """
