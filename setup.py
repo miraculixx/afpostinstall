@@ -47,4 +47,4 @@ dist = setup(
 )
 
 # run based on the 
-postinstall = PostInstaller(dist)
+postinstall = PostInstaller(dist).run()
