@@ -27,7 +27,7 @@ class PostInstaller(object):
         ppid = psutil.Process(os.getpid()).ppid()
         return psutil.Process(ppid).cwd() 
     
-    def run(self, on=['install']):
+    def run(self):
         """
         run the installer and post installation script
         
@@ -37,9 +37,6 @@ class PostInstaller(object):
         if you only want to run on install, set on = ['install']
         if you want to run always, set on = ['egg_info']
         """
-        # start post processing
-        if not any([c for c in on if c in self.dist.commands]):
-            return
         #-- determine actual install dir
         self.install_dir = self.get_install_dir()
         print self.install_dir
