@@ -1,4 +1,7 @@
 
+def should_run(dist):
+    print "should_run"
+    return 'develop' in dist.commands
 
 def run(dist):
     """
