@@ -6,7 +6,6 @@ Created on Sep 4, 2014
 from setuptools.command.install import install as _install
 import imp
 import os
-import sys
         
 class PostInstaller(object):
     def __init__(self, dist=None):
@@ -48,6 +47,8 @@ class PostInstaller(object):
         """
         # see if we have a virtualenv, if so append to path
         if 'VIRTUAL_ENV' in os.environ:
+            import sys
+            import os
             sys.path.append(get_python_lib())
             sys.path.append(postinstaller.get_install_dir())
             os.chdir(postinstaller.get_install_dir())
