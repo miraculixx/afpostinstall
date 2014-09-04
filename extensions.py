@@ -27,6 +27,21 @@ class PostInstaller(object):
         ppid = psutil.Process(os.getpid()).ppid()
         return psutil.Process(ppid).cwd() 
     
+    def load_postinstall(self):
+        # see if there is a post install, if so, load and run it
+        try:
+            file, path, descr = imp.find_module('postinstall', [self.install_dir])
+            postinstaller = imp.load_module('postinstall', file, path, descr)
+        except ImportError as e:
+            # die nicely
+            print "[ERROR] PostInstall failed, %s" % e
+            class DummyInstaller:
+                def run(self):
+                    pass
+                return DummyInstaller()
+        else:
+            return postinstaller
+    
     def run(self):
         """
         run the installer and post installation script
@@ -39,13 +54,5 @@ class PostInstaller(object):
         """
         #-- determine actual install dir
         self.install_dir = self.get_install_dir()
-        print self.install_dir
-        # see if there is a post install, if so, load and run it
-        try:
-            file, path, descr = imp.find_module('postinstall', [self.install_dir])
-            postinstaller = imp.load_module('postinstall', file, path, descr)
-            postinstaller.run(self)
-        except ImportError as e:
-            # die nicely
-            print "[ERROR] PostInstall failed, %s" % e
-            
+        postinaller = load_postinstall(self)
+        postinstaller.run(self.dist)
