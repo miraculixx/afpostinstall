@@ -53,4 +53,4 @@ class PostInstaller(object):
         """
         postinstaller = self.load_postinstall()
         if postinstaller and postinstaller.should_run(self.dist):
-            postinstaller.run(self.dist)
+            postinstaller.run(self)

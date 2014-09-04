@@ -1,6 +1,12 @@
 
 def should_run(dist):
-    print "should_run"
+    """
+    sample should_run. Determine, given dist, if this
+    should run. Must return True for run to run.
+    
+    This is to give the postinstall script more leeway
+    in determining when to run 
+    """
     return 'develop' in dist.commands
 
 def run(dist):
