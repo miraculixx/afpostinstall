@@ -40,7 +40,19 @@ class PostInstaller(object):
             return None
         else:
             return postinstaller
+        
+    def setup_django(self):
+        """
+        setup django, return settings for virtual env  
+        """
+        # see if we have a virtualenv, if so append to path
+        if 'VIRTUAL_ENV' in os.environ:
+            sys.path.append(get_python_lib())
+            sys.path.append(postinstaller.get_install_dir())
+            os.chdir(postinstaller.get_install_dir())
+        return __import__('settings')
     
+        
     def run(self):
         """
         run the installer and post installation script
