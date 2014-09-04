@@ -45,10 +45,10 @@ class PostInstaller(object):
         """
         setup django, return settings for virtual env  
         """
+        import sys
+        import os
         # see if we have a virtualenv, if so append to path
         if 'VIRTUAL_ENV' in os.environ:
-            import sys
-            import os
             sys.path.append(get_python_lib())
             sys.path.append(postinstaller.get_install_dir())
             os.chdir(postinstaller.get_install_dir())
