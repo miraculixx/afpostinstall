@@ -37,10 +37,10 @@ dist = setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     setup_requires=[
-        'psutil==2.1.1'
+        'psutil==5.6.6'
     ], 
     install_requires=[
-        'psutil==2.1.1'
+        'psutil==5.6.6'
     ], 
     dependency_links=[
     ],
